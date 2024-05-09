@@ -4,7 +4,7 @@ const { data } = await useFetch('/api/db');
 
 <template>
   <div>
-    <h1>Hi</h1>
-    {{ data?.dbRes }}
+    <h1>Pollite</h1>
+    {{ data?.dbRes[0].title }}
   </div>
 </template>
