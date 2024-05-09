@@ -1,5 +1,7 @@
 {
-  "name": "nuxt-app",
+  "name": "pollite",
+  "license": "MIT",
+  "author": "Alexander Bayer <onebarloop@posteo.de> (https://github.com/onebarloop)",
   "private": true,
   "type": "module",
   "scripts": {
