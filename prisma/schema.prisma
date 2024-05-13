@@ -11,11 +11,16 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  // directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Test {
-  id        Int      @id @default(autoincrement())
+model Poll {
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   title     String   @db.VarChar(255)
+}
+
+model Question {
+  id    Int     @id @default(autoincrement())
+  text  String  @db.VarChar(255)
 }

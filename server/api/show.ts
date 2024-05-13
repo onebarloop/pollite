@@ -10,6 +10,6 @@ export default defineEventHandler(async (event) => {
 const prisma = new PrismaClient();
      
 async function main() {
-  const test = await prisma.test.findMany();
+  const test = await prisma.poll.findMany();
   return test;
 }
