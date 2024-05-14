@@ -11,8 +11,8 @@ const create = async () => {
     method: 'POST',
     body: { data: title.value },
   });
-  refresh();
   title.value = null;
+  await refresh();
   loading.value = false;
 };
 </script>
