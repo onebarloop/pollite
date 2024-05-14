@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const title: Ref<null | string> = ref(null);
 
-const { data, refresh } = await useFetch('/api/crudtest');
+const { data, refresh, pending } = await useFetch('/api/crudtest');
 
 const create = async () => {
   await useFetch('/api/crudtest', {
@@ -16,7 +16,7 @@ const create = async () => {
 <template>
   <h1>Create Poll</h1>
   <input v-model="title" placeholder="Name of the poll" />
-  <button @click="create">Create</button>
+  <button @click="create" :disabled="pending">Create</button>
   <ul>
     <li v-for="poll in data?.dbRes">
       {{ poll.title }}
