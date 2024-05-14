@@ -12,8 +12,9 @@ const create = async () => {
     body: { data: title.value },
   });
   title.value = null;
-  await refresh();
-  loading.value = false;
+  refresh().then(() => {
+    loading.value = false;
+  });
 };
 </script>
 
