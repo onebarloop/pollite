@@ -19,7 +19,7 @@ const add = async (id: string, index: number) => {
   <h1>Show Poll</h1>
   <ul>
     <li v-for="(poll, index) in data?.dbRes" style="margin-bottom: 12px">
-      <div>{{ poll.title }}</div>
+      <a :href="poll.id">{{ poll.title }}</a>
       <ul>
         <li v-for="option in poll.options">{{ option.title }}</li>
       </ul>

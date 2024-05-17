@@ -23,7 +23,7 @@ const create = async () => {
   <button @click="create" :disabled="loading">Create</button>
   <ul>
     <li v-for="poll in data?.dbRes">
-      {{ poll.title }}
+      <a :href="poll.id">{{ poll.title }}</a>
     </li>
   </ul>
 </template>
