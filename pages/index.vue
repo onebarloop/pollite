@@ -7,7 +7,7 @@ const { data, refresh } = await useFetch('/api/polls');
 
 const create = async () => {
   loading.value = true;
-  await useFetch('/api/polls', {
+  await $fetch('/api/polls', {
     method: 'POST',
     body: { data: title.value },
   });

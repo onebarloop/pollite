@@ -4,7 +4,7 @@ const { data, refresh } = await useFetch('/api/polls');
 const titles: Ref<string[]> = ref([]);
 
 const add = async (id: string, index: number) => {
-  await useFetch('/api/option', {
+  await $fetch('/api/option', {
     method: 'POST',
     body: {
       id,

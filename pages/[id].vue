@@ -6,7 +6,7 @@ const optionTitle = ref(null);
 const { data, refresh } = await useFetch(`/api/poll/${route.params.id}`);
 
 const add = async (id: string) => {
-  await useFetch('/api/option', {
+  await $fetch('/api/option', {
     method: 'POST',
     body: {
       id,
@@ -20,7 +20,7 @@ const add = async (id: string) => {
 <template>
   <h2 v-if="!data">...loading</h2>
   <div v-else>
-    <div v-if="data.dbRes != null">
+    <div v-if="data.dbRes">
       <h2>{{ data.dbRes?.title }}</h2>
       <label for="option">Add a new Option to poll: </label>
       <input v-model="optionTitle" id="option" />

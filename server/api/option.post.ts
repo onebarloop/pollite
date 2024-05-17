@@ -3,12 +3,16 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+  const { title, id } = await readBody(event);
 
   await prisma.option.create({
     data: {
-      title: body.title,
-      pollId: body.id,
+      title: title,
+      pollId: id,
     },
   });
+
+  const res = prisma.option.findMany();
+
+  return res;
 });
