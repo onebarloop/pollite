@@ -18,9 +18,14 @@ model Poll {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   title     String   @db.VarChar(255)
+  options   Option[]
 }
 
-model Question {
-  id    Int     @id @default(autoincrement())
-  text  String  @db.VarChar(255)
+model Option {
+  id      Int     @id @default(autoincrement())
+  title   String  @db.VarChar(255)
+  poll    Poll    @relation(fields: [pollId], references: [id], onDelete: Cascade) 
+  pollId  String
 }
+
+
