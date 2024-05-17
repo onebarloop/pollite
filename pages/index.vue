@@ -3,11 +3,11 @@ const title: Ref<null | string> = ref(null);
 
 const loading: Ref<boolean> = ref(false);
 
-const { data, refresh } = await useFetch('/api/crudtest');
+const { data, refresh } = await useFetch('/api/polls');
 
 const create = async () => {
   loading.value = true;
-  await useFetch('/api/crudtest', {
+  await useFetch('/api/polls', {
     method: 'POST',
     body: { data: title.value },
   });

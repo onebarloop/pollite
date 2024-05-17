@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data, refresh } = await useFetch('/api/crudtest');
+const { data, refresh } = await useFetch('/api/polls');
 
 const titles: Ref<string[]> = ref([]);
 
