@@ -1,17 +1,19 @@
 <script setup lang="ts">
 const { data, refresh } = await useFetch('/api/polls');
 
+const polls = ref(data);
+
 const titles: Ref<string[]> = ref([]);
 
 const add = async (id: string, index: number) => {
-  await $fetch('/api/option', {
+  const res = await $fetch('/api/option', {
     method: 'POST',
     body: {
       id,
       title: titles.value[index],
     },
   });
-  refresh();
+  polls.value = res;
 };
 </script>
 

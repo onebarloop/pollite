@@ -10,7 +10,12 @@ export default defineEventHandler(async (event) => {
     },
   });
 
-  const res = prisma.option.findMany();
-
-  return res;
+  const dbRes = await prisma.poll.findMany({
+    include: {
+      options: true,
+    },
+  });
+  return {
+    dbRes,
+  };
 });

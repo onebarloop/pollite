@@ -7,6 +7,6 @@ export default defineEventHandler(async () => {
     },
   });
   return {
-    dbRes: dbRes,
+    dbRes,
   };
 });

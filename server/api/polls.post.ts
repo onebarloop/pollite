@@ -4,9 +4,18 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event);
 
-  const newPoll = await prisma.poll.create({
+  await prisma.poll.create({
     data: {
       title: body.data,
     },
   });
+
+  const dbRes = await prisma.poll.findMany({
+    include: {
+      options: true,
+    },
+  });
+  return {
+    dbRes,
+  };
 });

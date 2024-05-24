@@ -3,36 +3,36 @@ const route = useRoute();
 
 const optionTitle = ref(null);
 
-const { data, refresh } = await useFetch(`/api/poll/${route.params.id}`);
+const { data } = await useFetch(`/api/poll/${route.params.id}`);
+
+const poll = ref(data);
 
 const add = async (id: string) => {
-  await $fetch('/api/option', {
+  const res = await $fetch(`/api/poll/${id}`, {
     method: 'POST',
     body: {
       id,
       title: optionTitle.value,
     },
   });
-  refresh();
+  poll.value = res;
+  optionTitle.value = null;
 };
 </script>
 
 <template>
-  <h2 v-if="!data">...loading</h2>
+  <div v-if="poll?.dbRes">
+    <h2>{{ poll.dbRes?.title }}</h2>
+    <label for="option">Add a new Option to poll: </label>
+    <input v-model="optionTitle" id="option" />
+    <button @click="add(poll.dbRes.id)">Add</button>
+    <ul>
+      <li v-for="option in poll.dbRes.options">
+        {{ option.title }}
+      </li>
+    </ul>
+  </div>
   <div v-else>
-    <div v-if="data.dbRes">
-      <h2>{{ data.dbRes?.title }}</h2>
-      <label for="option">Add a new Option to poll: </label>
-      <input v-model="optionTitle" id="option" />
-      <button @click="add(data.dbRes.id)">Add</button>
-      <ul>
-        <li v-for="option in data.dbRes.options">
-          {{ option.title }}
-        </li>
-      </ul>
-    </div>
-    <div v-else>
-      <h2>Poll does not exist</h2>
-    </div>
+    <h2>Poll does not exist</h2>
   </div>
 </template>
