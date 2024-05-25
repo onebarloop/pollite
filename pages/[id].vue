@@ -2,6 +2,7 @@
 const route = useRoute();
 
 const optionTitle = ref(null);
+const loading: Ref<boolean> = ref(false);
 
 const { data } = await useFetch(`/api/poll/${route.params.id}`);
 
@@ -25,7 +26,7 @@ const add = async (id: string) => {
     <h2>{{ poll.dbRes?.title }}</h2>
     <label for="option">Add a new Option to poll: </label>
     <input v-model="optionTitle" id="option" />
-    <button @click="add(poll.dbRes.id)">Add</button>
+    <button @click="add(poll.dbRes.id)" :disabled="loading">Add</button>
     <ul>
       <li v-for="option in poll.dbRes.options">
         {{ option.title }}
