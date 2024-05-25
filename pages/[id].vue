@@ -9,6 +9,7 @@ const { data } = await useFetch(`/api/poll/${route.params.id}`);
 const poll = ref(data);
 
 const add = async (id: string) => {
+  loading.value = true;
   const res = await $fetch(`/api/poll/${id}`, {
     method: 'POST',
     body: {
@@ -18,6 +19,7 @@ const add = async (id: string) => {
   });
   poll.value = res;
   optionTitle.value = null;
+  loading.value = false;
 };
 </script>
 
