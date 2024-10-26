@@ -18,7 +18,7 @@
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
-    "nuxt": "^3.12.2",
+    "nuxt": "3.12.4",
     "prisma": "^5.13.0"
   }
 }
