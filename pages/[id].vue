@@ -27,10 +27,21 @@ const add = async (id: string) => {
   <div v-if="poll?.dbRes">
     <h2>{{ poll.dbRes?.title }}</h2>
     <label for="option">Add a new Option to poll: </label>
-    <input v-model="optionTitle" id="option" />
-    <button @click="add(poll.dbRes.id)" :disabled="loading">Add</button>
+    <input
+      id="option"
+      v-model="optionTitle"
+    >
+    <button
+      :disabled="loading"
+      @click="add(poll.dbRes.id)"
+    >
+      Add
+    </button>
     <ul>
-      <li v-for="option in poll.dbRes.options">
+      <li
+        v-for="option in poll.dbRes.options"
+        :key="option.id"
+      >
         {{ option.title }}
       </li>
     </ul>

@@ -1,14 +1,14 @@
-import prisma from "~/utils/prisma";
+import prisma from '~/utils/prisma';
 
 export default defineEventHandler(async (e) => {
-    const { title, id } = await readBody(e);
+  const { title, id } = await readBody(e);
 
-    await prisma.option.create({
-      data: {
-        title: title,
-        pollId: id,
-      },
-    });
+  await prisma.option.create({
+    data: {
+      title: title,
+      pollId: id,
+    },
+  });
 
   const dbRes = await prisma.poll.findUnique({
     where: {

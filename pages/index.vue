@@ -20,12 +20,26 @@ const create = async () => {
 </script>
 
 <template>
-  <h1>Create Poll</h1>
-  <input v-model="title" placeholder="Name of the poll" />
-  <button @click="create" :disabled="loading">Create</button>
-  <ul>
-    <li v-for="poll in polls?.dbRes">
-      <a :href="poll.id">{{ poll.title }}</a>
-    </li>
-  </ul>
+  <div>
+    <h1>Create Poll</h1>
+    <input
+      v-model="title"
+      placeholder="Name of the poll"
+    >
+
+    <button
+      :disabled="loading"
+      @click="create"
+    >
+      Create
+    </button>
+    <ul>
+      <li
+        v-for="poll in polls?.dbRes"
+        :key="poll.id"
+      >
+        <a :href="poll.id">{{ poll.title }}</a>
+      </li>
+    </ul>
+  </div>
 </template>
